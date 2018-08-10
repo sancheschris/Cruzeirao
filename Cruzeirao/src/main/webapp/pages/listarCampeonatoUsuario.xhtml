@@ -1,0 +1,54 @@
+<ui:composition template="default.xhtml"
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+
+	<ui:define name="principal">
+		<div class="principal" align="center">
+			<h1>Dados do usuario:</h1>
+			<p:outputLabel value="CPF: #{usuarioMB.usuarioAtual.cpf}"  />
+			<br/>
+			<p:outputLabel value="Nome: #{usuarioMB.usuarioAtual.nome}"  />
+			
+			    <h1>Campeonatos Cadastrados:</h1>
+				<h:form>
+				    <h:commandLink value="Novo Campeonato" action="#{usuarioMB.criarCampeonatos()}" />
+				    <h3>Campeonatos Cadastrados</h3>
+					<p:dataTable  value="#{usuarioMB.usuarioAtual.campeonatos}" var="campeonato" border="1" >
+				    
+			       	<p:column headerText="Nome">
+			        	<p:outputLabel value="#{campeonato.nome}"/>
+			       	</p:column>
+			       
+			     	<p:column headerText="Data de Inscricao">
+				     	<h:outputText/>
+				     	<p:outputLabel value="#{campeonato.dataInicioInscricao}"/>     
+			        </p:column>
+			       
+			       	<p:column headerText="Data Final de Inscricao">
+			         	<p:calendar value="#{campeonato.dataFimInscricao}"/>
+			       	</p:column>
+			       
+					<p:column headerText="Data Inicio do Campeonato">
+						<p:calendar value="#{campeonato.dataInicioCampeonato}"/>
+					</p:column>
+			       
+			       <p:column headerText="Data Final do Campeonato">
+			       		<p:calendar value="#{campeonato.dataFimCampeonato}"/>
+			       </p:column>
+			       
+			       <p:column headerText="Valor da Taxa">
+			       <p:outputLabel value="#{campeonato.valorTaxa}"/>
+			       </p:column>
+			       
+			       <p:column headerText="Opções" >
+						<p:commandLink action="#{campeonatoMB.verCategorias(campeonato)}" value="Ver Categorias" />
+						</p:column>
+					</p:dataTable>	
+			</h:form>
+		</div>
+	</ui:define>
+</ui:composition>
+	

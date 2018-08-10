@@ -1,0 +1,27 @@
+<ui:composition template="default.xhtml"
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+
+	<ui:define name="principal">
+		<div class="principal" align="center">
+			<h1>Cadastro de Fases</h1>
+			<h:form id="formFase">
+			     <h:panelGrid columns="2">
+			           <p:outputLabel value="Data de Inicio: "></p:outputLabel>
+			           <p:calendar value="#{categoriaMB.novaFase.dataInicio}"/>
+			           
+			           <p:outputLabel value="Data Final: "></p:outputLabel>
+			           <p:calendar value="#{categoriaMB.novaFase.dataFim}"/>
+			             
+			           <p:outputLabel value="Número: "/>
+			           <p:inputText value="#{categoriaMB.novaFase.numero}"/>
+			           
+			     </h:panelGrid>     
+			     <p:commandButton action="#{categoriaMB.salvarFase}" value="Salvar" update=":formFase" />
+			</h:form>
+		</div>
+	</ui:define>
+</ui:composition>

@@ -1,0 +1,26 @@
+<ui:composition template="default.xhtml"
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+
+	<ui:define name="principal">
+		<div class="principal" align="center">
+ 			<h:form id="formGrupo">
+     			<h:panelGrid columns="2">
+			           <p:outputLabel value="Nome: "/>
+			           <p:inputText value="#{grupoMB.novoGrupo.nome}"/> 
+			           
+			           <p:outputLabel value="Fase: "/>
+			           <p:inputText value="#{grupoMB.novoGrupo.fase}"/>  
+			            
+			           <p:outputLabel value="Numero: "/>
+			           <p:inputText value="#{grupoMB.novoGrupo.numero}"/>
+			                   
+			     </h:panelGrid>     
+			     <p:commandButton value="Salvar" action="#{grupoMB.salvar}" update=":formGrupo"	/>
+			 </h:form>
+		</div>
+	</ui:define>			
+</ui:composition>

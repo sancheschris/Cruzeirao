@@ -1,0 +1,54 @@
+<ui:composition template="default.xhtml"
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+	
+	<ui:define name="principal">
+		<div class="principal" align="center">
+			<h1>Campeonatos Cadastradas</h1>
+			<h:form>
+			
+				<p:dataTable var="campeonato" value="#{usuarioMB.usuarioAtual.campeonatos}">
+		       <p:column headerText="Nome">
+		          <p:outputLabel value="#{campeonato.nome}"/>
+		       </p:column>
+		       
+		     	<p:column headerText="Data de Inscricao">
+		     	<h:outputText/>
+		            <h:outputText value="#{campeonato.dataInicioInscricao}">
+		                <f:convertDateTime pattern="dd/MM/yyyy" />
+		            </h:outputText>
+		       </p:column>
+		       
+		       <p:column headerText="Data Final de Inscricao">
+		          <h:outputText/>
+		            <h:outputText value="#{campeonato.dataFimInscricao}">
+		                <f:convertDateTime pattern="dd/MM/yyyy" />
+		            </h:outputText>
+		       </p:column>
+		       
+		     <p:column headerText="Data Inicio do Campeonato">
+		          <h:outputText/>
+		            <h:outputText value="#{campeonato.dataInicioCampeonato}">
+		                <f:convertDateTime pattern="dd/MM/yyyy" />
+		            </h:outputText>
+		       </p:column>
+		       
+		       <p:column headerText="Data Final do Campeonato">
+		          <h:outputText/>
+		            <h:outputText value="#{campeonato.dataFimCampeonato}">
+		                <f:convertDateTime pattern="dd/MM/yyyy" />
+		            </h:outputText>
+		       </p:column>
+		       
+		       <p:column headerText="Valor da Taxa">
+		          <p:outputLabel value="#{campeonato.valorTaxa}"/>
+		       </p:column>
+	    
+		     </p:dataTable>
+			</h:form>
+		</div>
+	</ui:define>
+</ui:composition>

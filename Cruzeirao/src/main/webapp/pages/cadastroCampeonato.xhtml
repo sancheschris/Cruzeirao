@@ -1,0 +1,37 @@
+<ui:composition template="default.xhtml"
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+			
+	<ui:define name="principal">
+		<div class="principal" align="center">
+			<h1>Cadastro de Campeonato</h1>
+			<h:form id="formCampeonato">
+			     
+			      <h:panelGrid columns="2">
+			           <p:outputLabel value="Nome: "/>
+			           <p:inputText value="#{usuarioMB.novoCampeonato.nome}"/> 
+			          
+			           <p:outputLabel value="Data de Inscricao: "/>
+			           <p:calendar value="#{usuarioMB.novoCampeonato.dataInicioCampeonato}"/>   
+			           
+			           <p:outputLabel value="Data Final de Inscricao: "/>
+			           <p:calendar value="#{usuarioMB.novoCampeonato.dataFimInscricao}"/>
+			          
+			           <p:outputLabel value="Data Inicio do Campeonato: "/>
+			           <p:calendar value="#{usuarioMB.novoCampeonato.dataInicioCampeonato}"/>
+			           
+			           <p:outputLabel value="Data Final do Campeonato:"/>
+			           <p:calendar value="#{usuarioMB.novoCampeonato.dataFimCampeonato}"/>
+			           
+			           <p:outputLabel value="Valor da Taxa: "/>
+			           <p:inputText value="#{usuarioMB.novoCampeonato.valorTaxa}"/>
+			        
+			     </h:panelGrid>  
+			     <p:commandButton action="#{usuarioMB.salvarCampeonato}"  value="Salvar" update=":formCampeonato" />
+		     </h:form>
+		</div>
+	</ui:define>			
+</ui:composition>

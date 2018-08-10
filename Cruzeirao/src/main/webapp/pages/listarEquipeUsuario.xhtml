@@ -1,0 +1,38 @@
+<ui:composition template="default.xhtml"
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+
+	<ui:define name="principal">
+		<div class="principal" align="center">
+		<h1>Dados do usuario:</h1>
+		<p:outputLabel value="CPF: #{usuarioMB.usuarioAtual.cpf}"  />
+		<br/>
+		<p:outputLabel value="Nome: #{usuarioMB.usuarioAtual.nome}"  />
+		
+		    <h1>Equipes cadastrados:</h1>
+			<h:form>
+				
+			    
+			    <h:commandLink value="Nova Equipe" action="#{usuarioMB.criarEquipes()}" />
+			    <h3>Equipes Cadastradas</h3>
+				<p:dataTable  value="#{usuarioMB.usuarioAtual.equipes}" var="equipe" border="1" >
+			    
+			    <p:column headerText="Nome">
+				     <p:outputLabel  value="#{equipe.nome}"/>
+				</p:column>
+				
+				<p:column headerText="Data Fundacao">
+				     <p:calendar value="#{equipe.dataFundacao}"/>
+				</p:column>
+				
+				<p:column headerText="Cidade">
+				     <p:outputLabel  value="#{equipe.cidade}"/>
+				</p:column>
+				</p:dataTable>		
+			</h:form>
+		</div>
+	</ui:define>
+</ui:composition>

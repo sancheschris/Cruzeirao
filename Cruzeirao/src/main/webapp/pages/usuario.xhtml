@@ -1,0 +1,59 @@
+<ui:composition template="criacoes.xhtml"
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+	
+	<div class="principal" align="center">
+			<h1>Usuario</h1>
+				<h:form>
+					<p:dataTable value="#{usuarioMB.usuarios}" var="usuario">
+			     
+			       <p:column headerText="Email">
+			          <p:outputLabel value="#{usuario.email}"/>
+			       </p:column>
+			       
+			       <p:column headerText="Nome">
+			          <p:outputLabel value="#{usuario.nome}"/>
+			       </p:column>
+			       
+			   	<p:column headerText="Data de Nascimento">
+		    	<h:outputText/>
+				<h:outputText value="#{usuario.dataNascimento}">
+		       	<f:convertDateTime pattern="dd/MM/yyyy" />
+			       </h:outputText>
+			       </p:column>
+			       			       <p:column headerText="Telefone Fixo">
+		          <p:outputLabel value="#{usuario.telefoneFixo}"/>
+		       </p:column>
+		       
+			      <p:column headerText="Telefone Movel">
+			         <p:outputLabel value="#{usuario.telefoneMovel}"/>
+			      </p:column>
+			      
+			      <p:column headerText="Endereco">
+			         <p:outputLabel value="#{usuario.endereco}"/>
+			      </p:column>
+			       			       <p:column headerText="RG">
+		          <p:outputLabel value="#{usuario.rg}"/>
+		       </p:column>
+		       
+			      <p:column headerText="CPF">
+			         <p:outputLabel value="#{usuario.cpf}"/>
+			      </p:column>
+			      
+			      <p:column headerText="Sexo">
+			         <p:outputLabel value="#{usuario.sexo}"/>
+			    </p:column>
+			       			       <p:column headerText="Opções" >
+				<p:commandLink action="#{usuarioMB.verEquipes(usuario)}" value="Ver Equipes" />
+				</p:column>
+					<p:column headerText="Opções" >					
+					<p:commandLink action="#{usuarioMB.verCampeonatos(usuario)}" value="Ver Campeonatos" />
+				</p:column>
+				</p:dataTable>
+			</h:form>
+		</div>
+	
+</ui:composition>

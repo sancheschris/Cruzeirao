@@ -1,0 +1,49 @@
+<ui:composition template="default.xhtml"
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+
+	<ui:define name="principal">
+		<div class="principal" align="center">
+			<h1>Dados do usuario:</h1>
+			<p:outputLabel value="CPF: #{usuarioMB.usuarioAtual.cpf}"  />
+			<br/>
+			<p:outputLabel value="Nome: #{usuarioMB.usuarioAtual.nome}"  />
+			
+			<h1>Categorias cadastrados:</h1>
+			<h:form>				
+				<h:commandLink value="Nova Categoria" action="#{campeonatoMB.criarCategorias()}" />
+				<h3>Categorias Cadastradas</h3>
+				<p:dataTable  value="#{campeonatoMB.novoCampeonato.categorias}" var="cat" border="1" >					
+					<p:column headerText="Nome">
+						<p:outputLabel value="#{cat.nome}"/>
+					</p:column>
+						       
+					<p:column headerText="Nascidos a partir de:">
+						<h:outputText/>
+						<h:outputText value="#{cat.nascidosApartirDe}">
+						</h:outputText>
+					</p:column>	\
+								       
+					<p:column headerText="Numero Minimo de Jogadores">
+						<p:outputLabel value="#{cat.minJogadores}"/>
+					</p:column>	
+								       
+					<p:column headerText="Numero Maximo de Jogadores">
+						<p:outputLabel value="#{cat.maxJogadores}"/>
+					</p:column>	
+								       
+					<p:column headerText="Sexo">
+						<p:outputLabel value="#{cat.sexo}"/>
+					</p:column>	
+								    
+					<p:column headerText="Opções" >
+						<p:commandLink action="#{categoriaMB.verFases(cat)}" value="Ver Fases" />
+					</p:column>	    
+				</p:dataTable>
+			  </h:form>
+		</div>
+	</ui:define>
+</ui:composition>

@@ -1,0 +1,38 @@
+<ui:composition template="default.xhtml"
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+
+	<ui:define name="principal">
+		<div class="principal" align="center">
+			<h1>Fases Cadastradas</h1>
+			<h:form>
+					
+					<p:dataTable var="fase" value="#{faseMB.fase}">
+			     
+			        <p:column headerText="Data Inicial">
+			          <h:outputText/>
+			            <h:outputText value="#{fase.dataInicio}">
+			                <f:convertDateTime pattern="dd/MM/yyyy" />
+			            </h:outputText>
+			       </p:column>
+			       
+			     	 <p:column headerText="Data Final">
+			          <h:outputText/>
+			            <h:outputText value="#{fase.dataFim}">
+			                <f:convertDateTime pattern="dd/MM/yyyy" />
+			            </h:outputText>
+			       </p:column>
+			       
+			       <p:column headerText="Numero">
+			          <p:outputLabel value="#{fase.numero}"/>
+			       </p:column>
+			    
+			     </p:dataTable>
+			
+			</h:form>
+		</div>
+	</ui:define>
+</ui:composition>

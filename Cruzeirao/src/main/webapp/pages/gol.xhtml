@@ -1,0 +1,37 @@
+<ui:composition template="default.xhtml"
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+
+	<ui:define name="principal">
+		<div class="principal" align="center">
+			 <h:form id="formGol">
+			     <h:panelGrid columns="2">
+			           <p:outputLabel value="Tempo: "/>
+			           <p:inputText value="#{golMB.gol.tempo}"/> 
+			           
+			           <p:outputLabel value="Penalty: "/>
+			           <p:inputText  value="#{golMB.gol.penalty}"/>
+			          
+			           
+			     </h:panelGrid>     
+			     <p:commandButton value="Salvar" action="#{golMB.salvar}" update=":formGol"	/>
+				 <br>
+				 </br>		
+			     <p:dataTable var="gol" value="#{golMB.lista}">
+			       <p:column headerText="Tempo">
+			          <p:outputLabel value="#{gol.tempo}"/>
+			       </p:column>
+			       
+			       <p:column headerText="Penalty">
+			          <p:outputLabel value="#{gol.penalty}"/>
+			       </p:column>
+			    
+			     </p:dataTable>
+			     
+			 </h:form>
+		</div>
+	</ui:define>
+</ui:composition>

@@ -1,0 +1,30 @@
+<ui:composition template="default.xhtml"
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+
+	<ui:define name="principal">
+		<div class="principal" align="center">
+			<h1>Categorias Cadastradas</h1>
+		
+			<h:form>
+				
+			<p:dataTable var="inscricao" value="#{inscricaoMB.lista}">
+		       <p:column headerText="Numero">
+		          <p:outputLabel value="#{inscricao.numero}"/>
+		       </p:column>
+		     	<p:column headerText="Pagamento">
+		          <p:outputLabel value="#{inscricao.pagamento}"/>
+		       </p:column>
+		       <p:column headerText="Validada">
+		          <p:outputLabel value="#{inscricao.validada}"/>
+		       </p:column>
+		    
+		     </p:dataTable>
+		     
+			 </h:form>
+		</div>
+	</ui:define>
+</ui:composition>

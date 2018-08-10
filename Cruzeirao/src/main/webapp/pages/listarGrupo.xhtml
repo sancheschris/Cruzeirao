@@ -1,0 +1,35 @@
+<ui:composition template="default.xhtml"
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+
+	<ui:define name="principal">
+		<div class="principal" align="center">
+			<h1>Grupos Cadastradas</h1>
+			<h:form>
+				
+				<p:dataTable var="grupo" value="#{grupoMB.grupos}">
+		       <p:column headerText="Nome">
+		          <p:outputLabel value="#{grupo.nome}"/>
+		       </p:column>
+		       
+		     	<p:column headerText="Fase">
+		          <p:outputLabel value="#{grupo.fase}"/>
+		       </p:column>
+		       
+		       <p:column headerText="Rodadas">
+		          <p:outputLabel value="#{grupo.rodadas}"/>
+		       </p:column>
+		       
+		     <p:column headerText="Número">
+		          <p:outputLabel value="#{grupo.numero}"/>
+		       </p:column>
+		    
+		     </p:dataTable>
+		     
+		 </h:form>
+		</div>
+	</ui:define>
+</ui:composition>

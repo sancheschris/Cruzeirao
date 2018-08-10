@@ -1,0 +1,45 @@
+<ui:composition template="default.xhtml"
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+	<ui:define name="principal">
+		<div class="principal" align="center">
+			<h1>Cadastro de Usuario</h1>
+			<h:form id="formUsuario">
+			<h:panelGrid columns="2">
+			     		<p:outputLabel value="Email: "/>
+			           <p:inputText value="#{usuarioMB.novoUsuario.email}"/>
+			     
+			           <p:outputLabel value="Nome: "/>
+			           <p:inputText value="#{usuarioMB.novoUsuario.nome}"/> 
+			          
+			           <p:outputLabel value="Data de Nascimento: "/>
+			           <p:calendar value="#{usuarioMB.novoUsuario.dataNascimento}"/> 
+			           
+			           <p:outputLabel value="Telefone Fixo: "/>
+			           <p:inputText value="#{usuarioMB.novoUsuario.telefoneFixo}"/>
+			           
+			           <p:outputLabel value="Telefone Movel: "/>
+			           <p:inputText value="#{usuarioMB.novoUsuario.telefoneMovel}"/>
+			           
+			           <p:outputLabel value="Endereco: "/>
+			           <p:inputText value="#{usuarioMB.novoUsuario.endereco}"/>  
+			           
+			           <p:outputLabel value="RG: "/>
+			           <p:inputText value="#{usuarioMB.novoUsuario.rg}"/>
+			           
+			           <p:outputLabel value="CPF: "/>
+			           <p:inputText value="#{usuarioMB.novoUsuario.cpf}"/>
+			           
+			           <p:outputLabel value="Sexo: "/>
+			           <p:inputText value="#{usuarioMB.novoUsuario.sexo}"/>
+			             </h:panelGrid>    
+			     
+			     <p:commandButton   action="#{usuarioMB.salvar}"  value="Salvar" update=":formUsuario" />
+			
+			</h:form>
+		</div>
+	</ui:define>
+</ui:composition>

@@ -1,0 +1,33 @@
+<ui:composition template="default.xhtml"
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+
+	<ui:define name="principal">
+		<div class="principal" align="center">
+			 <h:form id="formCartao">
+			     <h:panelGrid columns="2">
+			           <p:outputLabel value="Cartao Vermelho: "/>
+			           <p:inputText value="#{cartaoMB.cartao.vermelho}"/> 
+			           
+			           <p:outputLabel value="Cartao Amarelo: "/>
+			           <p:inputText value="#{cartaoMB.cartao.amarelo}"/>
+			                
+			     </h:panelGrid>     
+			     <p:commandButton value="Salvar" action="#{cartaoMB.salvar}" update=":formCartao" />
+				<br>
+				</br>
+			     <p:dataTable var="cartao" value="#{cartaoMB.lista}">
+			       <p:column headerText="Cartao Vermelho">
+			          <p:outputLabel value="#{cartao.vermelho}"/>
+			       </p:column>
+			       <p:column headerText="Cartao Amarelo">
+			          <p:outputLabel value="#{cartao.amarelo}"/>
+			       </p:column>
+			     </p:dataTable>
+			 </h:form>
+		</div>
+	</ui:define>
+</ui:composition>

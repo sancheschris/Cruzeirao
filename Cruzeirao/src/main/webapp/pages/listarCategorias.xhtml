@@ -1,0 +1,42 @@
+<ui:composition template="default.xhtml"
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+
+	<ui:define name="principal">
+		<div class="principal" align="center">
+			<h1>Categorias Cadastradas</h1>
+			<h:form>
+				
+				<p:dataTable var="cat" value="#{categoriaMB.categoriaAtual}">
+		       <p:column headerText="Nome">
+		          <p:outputLabel value="#{cat.nome}"/>
+		       </p:column>
+		       
+		       <p:column headerText="Nascidos a partir de:">
+		          <h:outputText/>
+		            <h:outputText value="#{cat.nascidosApartirDe}">
+		                <f:convertDateTime pattern="dd/MM/yyyy" />
+		            </h:outputText>
+		       </p:column>
+		       
+		     	<p:column headerText="Numero Minimo de Jogadores">
+		          <p:outputLabel value="#{cat.minJogadores}"/>
+		       </p:column>
+		       
+		       <p:column headerText="Numero Maximo de Jogadores">
+		          <p:outputLabel value="#{cat.maxJogadores}"/>
+		       </p:column>
+		       
+		     <p:column headerText="Sexo">
+		          <p:outputLabel value="#{cat.sexo}"/>
+		       </p:column>
+		    
+		     </p:dataTable>
+		     
+		 	</h:form>
+		</div>
+	</ui:define>
+</ui:composition>

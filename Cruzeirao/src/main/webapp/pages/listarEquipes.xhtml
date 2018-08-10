@@ -1,0 +1,35 @@
+<ui:composition template="default.xhtml"
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+
+	<ui:define name="principal">
+		<div class="principal" align="center">
+			<h1>Equipes Cadastradas</h1>
+		
+			<h:form>
+				
+				<p:dataTable var="equipe" value="#{usuarioMB.usuarioAtual.equipes}">
+		       <p:column headerText="Nome">
+		          <p:outputLabel value="#{equipe.nome}"/>
+		       </p:column>
+		       
+		     	<p:column headerText="Data de Fundacao">
+		          <h:outputText/>
+		            <h:outputText value="#{equipe.dataFundacao}">
+		                <f:convertDateTime pattern="dd/MM/yyyy" />
+		            </h:outputText>
+		       </p:column>
+		       
+		       <p:column headerText="Cidade">
+		          <p:outputLabel value="#{equipe.cidade}"/>
+		       </p:column>
+		    
+		     </p:dataTable>
+		
+			</h:form>
+		</div>
+	</ui:define>
+</ui:composition>
