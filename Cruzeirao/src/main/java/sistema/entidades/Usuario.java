@@ -3,17 +3,23 @@ package sistema.entidades;
 import java.util.ArrayList;
 import java.util.Date;
 
+import javax.persistence.Id;
+import javax.persistence.Transient;
+
 public class Usuario {
 
 	private String email;
 	private String nome;
 	private Date dataNascimento;
+	@Transient
 	private ArrayList<Equipe> equipes = new ArrayList<Equipe>();
+	@Transient
 	private ArrayList<Campeonato> campeonatos = new ArrayList<Campeonato>();
 	private String telefoneFixo;
 	private String telefoneMovel;
 	private String endereco;
 	private String rg;
+	@Id
 	private String cpf;
 	private String sexo;
 
