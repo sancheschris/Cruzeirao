@@ -1,14 +1,41 @@
 package sistema.service;
 
-import java.util.ArrayList;
 import java.util.List;
+
+import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.Query;
 
 import sistema.entidades.Campeonato;
 
 public class CampeonatoService {
 	
-	private ArrayList<Campeonato> campeonatos = Dados.CAMPEONATOS;
+	//private ArrayList<Campeonato> campeonatos = Dados.CAMPEONATOS;
+	private EntityManagerFactory emf;
 	
+	public void salvar(Campeonato campeonato)
+	{
+		EntityManager em = emf.createEntityManager();
+		em.getTransaction().begin();
+		em.persist(campeonato);
+		em.getTransaction();
+		em.close();
+	}
+	
+	@SuppressWarnings("unchecked")
+	public List<Campeonato> getCampeonatos()
+	{
+		List<Campeonato> campeonatos;
+		
+		EntityManager em = emf.createEntityManager();
+		Query q = em.createQuery("Select c from Campeonato c");
+		campeonatos = q.getResultList();
+		em.close();
+		
+		return campeonatos;
+	}
+	
+	/*
 	public List<Campeonato> getCampeonatos() {
 		return campeonatos;
 	}
@@ -24,4 +51,5 @@ public class CampeonatoService {
 		
 		return null;
 	}
+	*/
 }

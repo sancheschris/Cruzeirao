@@ -3,11 +3,15 @@ package sistema.entidades;
 import java.util.ArrayList;
 import java.util.Date;
 
+import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Transient;
 
+
+@Entity
 public class Usuario {
 
+	
 	private String email;
 	private String nome;
 	private Date dataNascimento;

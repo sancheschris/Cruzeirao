@@ -1,7 +1,11 @@
 package sistema.service;
 
-import java.util.ArrayList;
 import java.util.List;
+
+import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.Persistence;
+import javax.persistence.Query;
 
 import sistema.entidades.Usuario;
 
@@ -9,24 +13,33 @@ import sistema.entidades.Usuario;
 public class UsuarioService {
 	
 
-	private ArrayList <Usuario> usuarios = Dados.USUARIOS;
+	//private ArrayList <Usuario> usuarios = Dados.USUARIOS;
+	private EntityManagerFactory emf;
 
-	public List<Usuario> getUsuarios() {
-		return usuarios;
-	}
-
-	public void salvar(Usuario usuario )
+	public UsuarioService()
 	{
-		usuarios.add(usuario);
+		emf = Persistence.createEntityManagerFactory("Cruzeirao");
 	}
 	
-	public Usuario getUsuarioId(String idUsuario) {
-		
-		for(int i=0; i< usuarios.size(); i++)
-			if(idUsuario == usuarios.get(i).getCpf())
-				return usuarios.get(i);
-		
-		return null;
+	public void salvar(Usuario usuario )
+	{
+		EntityManager em = emf.createEntityManager();
+		em.getTransaction().begin();
+		em.persist(usuario);
+		em.getTransaction().commit();
+		em.close();
 	}
-
+	
+	@SuppressWarnings("unchecked")
+	public List<Usuario> getUsuarios()
+	{
+		List<Usuario> usuarios;
+		
+		EntityManager em = emf.createEntityManager();
+		Query q = em.createQuery("Select a from Usuario a");
+		usuarios = q.getResultList();
+		em.close();
+		
+		return usuarios;
+	}
 }

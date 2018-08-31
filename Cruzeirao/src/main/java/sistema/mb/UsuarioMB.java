@@ -34,6 +34,7 @@ public class UsuarioMB {
 		return usuarioService.getUsuarios();
 	}
 	
+	/*
 	public String verEquipesCPF(String cpf)
 	{
 		usuarioAtual = usuarioService.getUsuarioId(cpf);
@@ -60,7 +61,7 @@ public class UsuarioMB {
 		usuarioAtual = usuarioService.getUsuarioId(usuario.getCpf());
 		return "listarCampeonatoUsuario";
 	}
-	
+	*/
 	
 	public String criarEquipes()
 	{

@@ -49,6 +49,7 @@ public class CampeonatoMB {
 		this.campeonatoAtual = campeonatoAtual;
 	}
 	
+	/*
 	public String verCategoriasNome(String idNome) {
 		campeonatoAtual = campeonatoService.getCampeonatoByNome(idNome);
 		return "listarCategoriaCampeonato";
@@ -58,7 +59,7 @@ public class CampeonatoMB {
 		campeonatoAtual = campeonatoService.getCampeonatoByNome(campeonato.getNome());
 		return "listarCategoriaCampeonato";
 	}
-	
+	*/
 	public String criarCategorias() {
 		novaCategoria = new Categoria();
 		return "cadastroCategoria";

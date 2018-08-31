@@ -6,12 +6,19 @@ import java.util.Date;
 
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Transient;
 
 import org.primefaces.event.SelectEvent;
 
+@Entity
 public class Campeonato {
+	@Id
 	private String nome;
+	@Transient
 	private ArrayList<Categoria> categorias = new ArrayList<Categoria>();
+	@Transient
 	private ArrayList<Usuario> usuarios = new ArrayList<Usuario>();
 	private Date dataInicioInscricao;
 	private Date dataFimInscricao;
