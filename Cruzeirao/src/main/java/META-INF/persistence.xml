@@ -3,9 +3,16 @@
 	<persistence-unit name="Cruzeirao">
 		<class>sistema.entidades.Usuario</class>
 		<class>sistema.entidades.Campeonato</class>
+		<class>sistema.entidades.Equipe</class>
+		<class>sistema.entidades.Categoria</class>
+		<class>sistema.entidades.Fase</class>
+		<class>sistema.entidades.Grupo</class>
+		<class>sistema.entidades.Inscricao</class>
+		<class>sistema.entidades.Rodada</class>
+		<class>sistema.entidades.Partida</class>
 		
 		<properties>
-			<property name="javax.persistence.jdbc.url" value="jdbc:derby://localhost:1527/DBTeste;create=true"/>
+			<property name="javax.persistence.jdbc.url" value="jdbc:derby://localhost:1527/Cruzeirao;create=true"/>
 			<property name="javax.persistence.jdbc.user" value="app"/>
 			<property name="javax.persistence.jdbc.driver" value="org.apache.derby.jdbc.ClientDriver"/>
 			<property name="eclipselink.ddl-generation" value="create-tables"/>

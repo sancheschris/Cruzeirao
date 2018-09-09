@@ -2,10 +2,17 @@ package sistema.entidades;
 
 import java.util.ArrayList;
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Transient;
+
+@Entity
 public class Grupo {
 	private String nome;
 	private Fase fase;
+	@Transient
 	private ArrayList<Rodada> rodadas = new ArrayList<>();
+	@Id
 	private int numero;
 	public String getNome() {
 		return nome;

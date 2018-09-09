@@ -3,12 +3,20 @@ package sistema.entidades;
 import java.util.ArrayList;
 import java.util.Date;
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Transient;
+
+@Entity
 public class Equipe {
+	@Id
 	private String nome;
 	private Date dataFundacao;
 	private String cidade;
 	private Usuario usuario;
+	@Transient
 	private ArrayList<Usuario> usuarios = new ArrayList<Usuario>(); // equipe tem 0 ou mais usuarios
+	@Transient
 	private ArrayList<Inscricao> inscricoes = new ArrayList<Inscricao>(); // equipe realiza 0 ou mais inscriçoes
 
 	public String getNome() {

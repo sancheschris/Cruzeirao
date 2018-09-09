@@ -2,14 +2,21 @@ package sistema.entidades;
 import java.util.ArrayList;
 import java.util.Date;
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Transient;
 
+@Entity
 public class Fase {
 	
 	private Date dataInicio;
 	private Date dataFim;
 	private Categoria categoria;
+	@Transient
 	private ArrayList<Categoria> categorias = new ArrayList<Categoria>(); 
+	@Transient
 	private static ArrayList<Grupo> grupos = new ArrayList<>();
+	@Id
 	private int numero;
 	
 	public Fase() {

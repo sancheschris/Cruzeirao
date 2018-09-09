@@ -37,7 +37,7 @@ public class UsuarioMB {
 	/*
 	public String verEquipesCPF(String cpf)
 	{
-		usuarioAtual = usuarioService.getUsuarioId(cpf);
+		usuarioAtual = usuarioService.getUsuarios();
 		return "listarEquipeUsuario";
 	}
 	

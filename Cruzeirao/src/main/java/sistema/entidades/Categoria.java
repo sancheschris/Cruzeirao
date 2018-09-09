@@ -2,12 +2,21 @@ package sistema.entidades;
 
 import java.util.ArrayList;
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Transient;
+
+@Entity
 public class Categoria {
+	@Id
 	private String nome;
 	private int nascidosApartirDe;
+	@Transient
 	private ArrayList<Inscricao> inscricoes = new ArrayList<>();
 	private Campeonato campeonato;
+	@Transient
 	private ArrayList<Fase> fases = new ArrayList<Fase>();
+	@Transient
 	private ArrayList<Campeonato> campeonatos = new ArrayList<Campeonato>();
 	private int minJogadores;
 	private int maxJogadores;

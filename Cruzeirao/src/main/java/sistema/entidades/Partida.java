@@ -2,7 +2,12 @@ package sistema.entidades;
 
 import java.util.Date;
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
+
+@Entity
 public class Partida {
+	@Id
 	private int numero;
 	private Inscricao equipeMandante;
 	private Inscricao equipeVisitante; // somente quando é arraylist

@@ -25,6 +25,8 @@ public class Campeonato {
 	private Date dataInicioCampeonato;
 	private Date dataFimCampeonato;
 	private double valorTaxa;
+	//@ManyToOne
+	//@JoinColumn(name = "usuario")
 	private Usuario usuario; // por direcional nao deve existir esse atributo. rever
 	
 	public void onDateSelect(SelectEvent event) {

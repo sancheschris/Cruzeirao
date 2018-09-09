@@ -25,6 +25,7 @@ public class CategoriaMB {
 		return "menu";
 	}
 	
+	/*
 	public String verFasesNome(String idNome)
 	{
 		categoriaAtual = categoriaService.getCategoriaByNome(idNome);
@@ -36,7 +37,7 @@ public class CategoriaMB {
 		categoriaAtual = categoriaService.getCategoriaByNome(categoria.getNome());
 		return "listarFaseCategoria";
 	}
-	
+	*/
 	public List<Categoria> getCategorias(){
 		return categoriaService.getCategorias();
 	}

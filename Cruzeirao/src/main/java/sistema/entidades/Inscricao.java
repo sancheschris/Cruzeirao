@@ -2,11 +2,18 @@ package sistema.entidades;
 
 import java.util.ArrayList;
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Transient;
+
+@Entity
 public class Inscricao {
+	@Id
 	private Long numero;
 	private boolean pagamento;
 	private boolean validada;
 	private Categoria categoria = new Categoria();
+	@Transient
 	private ArrayList<Partida> partidas = new ArrayList<>();
 	private Equipe equipe = new Equipe();
 	

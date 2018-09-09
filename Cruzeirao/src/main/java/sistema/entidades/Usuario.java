@@ -15,8 +15,10 @@ public class Usuario {
 	private String email;
 	private String nome;
 	private Date dataNascimento;
+	//@OneToMany(cascade=CascadeType.ALL, mappedBy = "usuario")
 	@Transient
 	private ArrayList<Equipe> equipes = new ArrayList<Equipe>();
+	//@OneToMany(cascade=CascadeType.ALL, mappedBy = "usuario")
 	@Transient
 	private ArrayList<Campeonato> campeonatos = new ArrayList<Campeonato>();
 	private String telefoneFixo;
