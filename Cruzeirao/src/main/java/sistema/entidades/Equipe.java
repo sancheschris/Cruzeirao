@@ -5,6 +5,8 @@ import java.util.Date;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Transient;
 
 @Entity
@@ -13,6 +15,8 @@ public class Equipe {
 	private String nome;
 	private Date dataFundacao;
 	private String cidade;
+	@ManyToOne
+	@JoinColumn(name="id_usario")
 	private Usuario usuario;
 	@Transient
 	private ArrayList<Usuario> usuarios = new ArrayList<Usuario>(); // equipe tem 0 ou mais usuarios

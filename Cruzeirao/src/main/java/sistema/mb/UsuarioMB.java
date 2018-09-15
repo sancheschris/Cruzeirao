@@ -4,6 +4,9 @@ import java.util.List;
 
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
+import javax.faces.bean.ViewScoped;
+
+import org.primefaces.event.RowEditEvent;
 
 import sistema.entidades.Campeonato;
 import sistema.entidades.Equipe;
@@ -12,7 +15,7 @@ import sistema.service.UsuarioService;
 
 
 @ManagedBean
-@SessionScoped
+@ViewScoped
 public class UsuarioMB {
 	
 	private UsuarioService usuarioService = new UsuarioService();
@@ -20,18 +23,47 @@ public class UsuarioMB {
 	private Equipe novaEquipe;
 	private Campeonato novoCampeonato;
 	private Usuario usuarioAtual;
+	private List<Usuario> usuarios;
 	
+	// Edicao de um aluno na tabela
+	public void onRowEdit(RowEditEvent event) {
+		
+		Usuario u = ((Usuario) event.getObject());
+		usuarioService.alterar(u);
+	}
 	
+	/*
 	public String salvar() {
 		usuarioService.salvar(novoUsuario);
 		novoUsuario = new Usuario();
 		return "menu";
+	}
+	
+	*/
+	
+	public void salvar() {
+		usuarioService.salvar(novoUsuario);
+		
+		if(usuarios != null) {
+			usuarios.add(novoUsuario);
+		}
+		
+		novoUsuario = new Usuario();
+	}
+	
+	// REtorna a lista de alunos para a tabela 
+	public List <Usuario> getUsuarios()
+	{
+		if(usuarios == null)
+			usuarios = usuarioService.getUsuarios();
+		
+		return usuarios;
 		
 	}
 	
-	public List <Usuario> getUsuarios()
-	{
-		return usuarioService.getUsuarios();
+	public void remover(Usuario usuario) {
+		usuarioService.remover(usuario);
+		usuarios.remove(usuario);
 	}
 	
 	/*

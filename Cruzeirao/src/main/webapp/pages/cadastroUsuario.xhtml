@@ -35,11 +35,73 @@
 			           
 			           <p:outputLabel value="Sexo: "/>
 			           <p:inputText value="#{usuarioMB.novoUsuario.sexo}"/>
-			             </h:panelGrid>    
+			 </h:panelGrid>    
 			     
-			     <p:commandButton   action="#{usuarioMB.salvar}"  value="Salvar" update=":formUsuario" />
+			     <p:commandButton   action="#{usuarioMB.salvar}"  value="#{msg['pages.cadastroUsuario.btnSalvar']}" update=":formUsuario, :formTableUsuario:tabelaUsuario" />
 			
 			</h:form>
 		</div>
+		
+		<br/>
+		<h:form id="formTableUsuario">
+		 <p:dataTable
+                value="#{usuarioMB.usuarios}"
+                var="aux"
+                id="tabelaUsuario"
+            
+                editable="true"
+            
+                paginator="true"
+                rows="5"
+                paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+                rowsPerPageTemplate="5,10,15"
+                
+                emptyMessage="#{msg['pages.cadastroUsuario.filterMSG']}"
+                
+   >
+      
+      <p:ajax event="rowEdit" listener="#{usuarioMB.onRowEdit}" update="tabelaUsuario" />
+      
+      <p:column headerText="#{msg['pages.cadastroUsuario.email']}" filterBy="#{aux.email}">
+        <p:outputLabel value="#{aux.email}" />
+      </p:column>
+      
+      
+      
+      <p:column headerText="#{msg['pages.cadastroUsuario.nome']}" filterBy="#{aux.nome}">
+    
+    			<p:cellEditor>
+					<f:facet name="output">
+						<p:outputLabel value="#{aux.nome}" />
+					</f:facet>
+					<f:facet name="input">
+						<p:inputText id="usuarioNome" value="#{aux.nome}"
+							style="width:100%" />
+					</f:facet>
+				</p:cellEditor>
+	  </p:column>
+    
+     
+      
+      <p:column style="width:70px" headerText="#{msg['pages.cadastroUsuario.optionTable']}">
+					
+					<p:rowEditor />
+					
+					<p:commandLink id="remover" styleClass="ui-icon ui-icon-trash"
+						style="text-align:center"
+						actionListener="#{usuarioMB.remover(aux)}"
+						update="tabelaUsuario" />
+	  </p:column>
+
+      
+      
+   </p:dataTable>	
+
+	</h:form>
+		 
+		
+		
+		
+		
 	</ui:define>
 </ui:composition>

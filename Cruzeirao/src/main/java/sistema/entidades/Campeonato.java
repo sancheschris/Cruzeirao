@@ -8,6 +8,10 @@ import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
 import javax.persistence.Transient;
 
 import org.primefaces.event.SelectEvent;
@@ -18,17 +22,21 @@ public class Campeonato {
 	private String nome;
 	@Transient
 	private ArrayList<Categoria> categorias = new ArrayList<Categoria>();
-	@Transient
+	@ManyToMany
+	@JoinTable(name="TBLUserCamp", 
+	joinColumns=@JoinColumn(name="id_usuario"),
+	inverseJoinColumns=@JoinColumn(name="id_campeonato"))
 	private ArrayList<Usuario> usuarios = new ArrayList<Usuario>();
 	private Date dataInicioInscricao;
 	private Date dataFimInscricao;
 	private Date dataInicioCampeonato;
 	private Date dataFimCampeonato;
 	private double valorTaxa;
-	//@ManyToOne
-	//@JoinColumn(name = "usuario")
+	/*
+	@ManyToOne
+	@JoinColumn(name = "usuario")
 	private Usuario usuario; // por direcional nao deve existir esse atributo. rever
-	
+	*/
 	public void onDateSelect(SelectEvent event) {
         FacesContext facesContext = FacesContext.getCurrentInstance();
         SimpleDateFormat format = new SimpleDateFormat("dd/MM/yyyy");
@@ -91,6 +99,7 @@ public class Campeonato {
 		this.valorTaxa = valorTaxa;
 	}
 
+	/*
 	public Usuario getUsuario() {
 		return usuario;
 	}
@@ -98,7 +107,7 @@ public class Campeonato {
 	public void setUsuario(Usuario usuario) {
 		this.usuario = usuario;
 	}
-	
+	*/
 	public void addCategorias(Categoria categoria) {
 		categorias.add(categoria);
 	}

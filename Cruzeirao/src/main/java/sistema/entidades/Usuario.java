@@ -3,8 +3,12 @@ package sistema.entidades;
 import java.util.ArrayList;
 import java.util.Date;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.OneToMany;
 import javax.persistence.Transient;
 
 
@@ -15,11 +19,12 @@ public class Usuario {
 	private String email;
 	private String nome;
 	private Date dataNascimento;
-	//@OneToMany(cascade=CascadeType.ALL, mappedBy = "usuario")
-	@Transient
+	@OneToMany(cascade=CascadeType.PERSIST, mappedBy = "usuario")
 	private ArrayList<Equipe> equipes = new ArrayList<Equipe>();
-	//@OneToMany(cascade=CascadeType.ALL, mappedBy = "usuario")
-	@Transient
+	@OneToMany(cascade=CascadeType.PERSIST)
+	@JoinTable(name="TBLUserCamp", 
+	joinColumns=@JoinColumn(name="id_usuario"),
+	inverseJoinColumns=@JoinColumn(name="id_campeonato"))
 	private ArrayList<Campeonato> campeonatos = new ArrayList<Campeonato>();
 	private String telefoneFixo;
 	private String telefoneMovel;

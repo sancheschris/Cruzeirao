@@ -30,6 +30,22 @@ public class UsuarioService {
 		em.close();
 	}
 	
+	public void alterar(Usuario usuario) {
+		EntityManager em = emf.createEntityManager();
+		em.getTransaction().begin();
+		em.merge(usuario);
+		em.getTransaction().commit();
+		em.close();
+	}
+	
+	public void remover(Usuario usuario) {
+		EntityManager em = emf.createEntityManager();
+		em.getTransaction().begin();
+		usuario = em.find(Usuario.class, usuario.getCpf());
+		em.getTransaction().commit();
+		em.close();
+	}
+	
 	@SuppressWarnings("unchecked")
 	public List<Usuario> getUsuarios()
 	{
@@ -41,5 +57,5 @@ public class UsuarioService {
 		em.close();
 		
 		return usuarios;
-	}
+	}	
 }
