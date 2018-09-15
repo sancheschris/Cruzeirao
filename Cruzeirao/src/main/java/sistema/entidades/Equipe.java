@@ -16,7 +16,7 @@ public class Equipe {
 	private Date dataFundacao;
 	private String cidade;
 	@ManyToOne
-	@JoinColumn(name="id_usario")
+	@JoinColumn(name="cpf")
 	private Usuario usuario;
 	@Transient
 	private ArrayList<Usuario> usuarios = new ArrayList<Usuario>(); // equipe tem 0 ou mais usuarios
