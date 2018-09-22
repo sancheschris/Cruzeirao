@@ -9,10 +9,18 @@ import javax.persistence.Transient;
 @Entity
 public class Rodada {
 	@Id
+	private long idRodada;
 	private int numero;
 	private Grupo grupo;
 	@Transient
 	private ArrayList<Partida> partidas  = new ArrayList<>();
+	
+	public long getIdRodada() {
+		return idRodada;
+	}
+	public void setIdRodada(long idRodada) {
+		this.idRodada = idRodada;
+	}
 	public int getNumero() {
 		return numero;
 	}

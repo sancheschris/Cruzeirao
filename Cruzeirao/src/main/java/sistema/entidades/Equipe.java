@@ -7,12 +7,16 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 import javax.persistence.Transient;
 
 @Entity
 public class Equipe {
 	@Id
+	private long idEquipe;
 	private String nome;
+	@Temporal(TemporalType.DATE)
 	private Date dataFundacao;
 	private String cidade;
 	@ManyToOne
@@ -22,6 +26,14 @@ public class Equipe {
 	private ArrayList<Usuario> usuarios = new ArrayList<Usuario>(); // equipe tem 0 ou mais usuarios
 	@Transient
 	private ArrayList<Inscricao> inscricoes = new ArrayList<Inscricao>(); // equipe realiza 0 ou mais inscriçoes
+
+	public long getIdEquipe() {
+		return idEquipe;
+	}
+
+	public void setIdEquipe(long idEquipe) {
+		this.idEquipe = idEquipe;
+	}
 
 	public String getNome() {
 		return nome;

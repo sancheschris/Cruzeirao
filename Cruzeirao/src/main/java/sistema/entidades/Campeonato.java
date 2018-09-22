@@ -12,6 +12,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 import javax.persistence.Transient;
 
 import org.primefaces.event.SelectEvent;
@@ -19,6 +21,7 @@ import org.primefaces.event.SelectEvent;
 @Entity
 public class Campeonato {
 	@Id
+	private long idCampeonato;
 	private String nome;
 	@Transient
 	private ArrayList<Categoria> categorias = new ArrayList<Categoria>();
@@ -27,9 +30,13 @@ public class Campeonato {
 	joinColumns=@JoinColumn(name="id_usuario"),
 	inverseJoinColumns=@JoinColumn(name="id_campeonato"))
 	private ArrayList<Usuario> usuarios = new ArrayList<Usuario>();
+	@Temporal(TemporalType.DATE)
 	private Date dataInicioInscricao;
+	@Temporal(TemporalType.DATE)
 	private Date dataFimInscricao;
+	@Temporal(TemporalType.DATE)
 	private Date dataInicioCampeonato;
+	@Temporal(TemporalType.DATE)
 	private Date dataFimCampeonato;
 	private double valorTaxa;
 	/*
@@ -42,6 +49,17 @@ public class Campeonato {
         SimpleDateFormat format = new SimpleDateFormat("dd/MM/yyyy");
         facesContext.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Date Selected", format.format(event.getObject())));
     }
+
+	
+	public long getIdCampeonato() {
+		return idCampeonato;
+	}
+
+
+	public void setIdCampeonato(long idCampeonato) {
+		this.idCampeonato = idCampeonato;
+	}
+
 
 	public String getNome() {
 		return nome;

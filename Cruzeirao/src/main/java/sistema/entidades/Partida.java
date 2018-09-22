@@ -4,19 +4,29 @@ import java.util.Date;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 @Entity
 public class Partida {
 	@Id
+	private long idPartida;
 	private int numero;
 	private Inscricao equipeMandante;
 	private Inscricao equipeVisitante; // somente quando é arraylist
+	@Temporal(TemporalType.DATE)
 	private Date data;
 	private Partida proxPartida;
 	private Grupo grupo;
 	private String relatoJuiz;
 	private Inscricao[] inscricoes = {new Inscricao(), new Inscricao()};  // 0 ou 2 inscricoes
 	
+	public long getIdPartida() {
+		return idPartida;
+	}
+	public void setIdPartida(long idPartida) {
+		this.idPartida = idPartida;
+	}
 	public int getNumero() {
 		return numero;
 	}

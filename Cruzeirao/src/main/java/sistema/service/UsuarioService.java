@@ -41,7 +41,8 @@ public class UsuarioService {
 	public void remover(Usuario usuario) {
 		EntityManager em = emf.createEntityManager();
 		em.getTransaction().begin();
-		usuario = em.find(Usuario.class, usuario.getCpf());
+		usuario = em.find(Usuario.class, usuario.getIdUsuario());
+		em.remove(usuario);
 		em.getTransaction().commit();
 		em.close();
 	}

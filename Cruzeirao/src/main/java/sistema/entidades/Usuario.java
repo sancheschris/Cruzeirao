@@ -5,19 +5,26 @@ import java.util.Date;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.OneToMany;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 import javax.persistence.Transient;
 
 
 @Entity
 public class Usuario {
 
-	
+	@Id
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	private long idUsuario;
 	private String email;
 	private String nome;
+	@Temporal(TemporalType.DATE)
 	private Date dataNascimento;
 	@OneToMany(cascade=CascadeType.PERSIST, mappedBy = "usuario")
 	private ArrayList<Equipe> equipes = new ArrayList<Equipe>();
@@ -30,10 +37,17 @@ public class Usuario {
 	private String telefoneMovel;
 	private String endereco;
 	private String rg;
-	@Id
 	private String cpf;
 	private String sexo;
 
+	
+	
+	public long getIdUsuario() {
+		return idUsuario;
+	}
+	public void setIdUsuario(long idUsuario) {
+		this.idUsuario = idUsuario;
+	}
 	public String getEmail() {
 		return email;
 	}

@@ -8,12 +8,20 @@ import javax.persistence.Transient;
 
 @Entity
 public class Grupo {
+	@Id
+	private long idGrupo;
 	private String nome;
 	private Fase fase;
 	@Transient
 	private ArrayList<Rodada> rodadas = new ArrayList<>();
-	@Id
 	private int numero;
+	
+	public long getIdGrupo() {
+		return idGrupo;
+	}
+	public void setIdGrupo(long idGrupo) {
+		this.idGrupo = idGrupo;
+	}
 	public String getNome() {
 		return nome;
 	}

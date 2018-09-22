@@ -115,14 +115,14 @@ public class UsuarioMB {
 		return "listarEquipeUsuario";
 	}
 	
-	
+	/*
 	public String salvarCampeonato()
 	{
 		usuarioAtual.addCampeonatos(novoCampeonato);
 		novoCampeonato.setUsuario(usuarioAtual);
 		return "listarCampeonatoUsuario";
 	}
-	
+	*/
 	public Usuario getNovoUsuario() {
 		return novoUsuario;
 	}

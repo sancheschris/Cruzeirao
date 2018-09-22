@@ -4,25 +4,38 @@ import java.util.Date;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 import javax.persistence.Transient;
 
 @Entity
 public class Fase {
 	
+	@Id
+	private long idFase;
+	@Temporal(TemporalType.DATE)
 	private Date dataInicio;
+	@Temporal(TemporalType.DATE)
 	private Date dataFim;
 	private Categoria categoria;
 	@Transient
 	private ArrayList<Categoria> categorias = new ArrayList<Categoria>(); 
 	@Transient
 	private static ArrayList<Grupo> grupos = new ArrayList<>();
-	@Id
 	private int numero;
 	
 	public Fase() {
 		super();
 	}
 	
+	public long getIdFase() {
+		return idFase;
+	}
+
+	public void setIdFase(long idFase) {
+		this.idFase = idFase;
+	}
+
 	public Date getDataInicio() {
 		return dataInicio;
 	}

@@ -9,7 +9,8 @@ import javax.persistence.Transient;
 @Entity
 public class Inscricao {
 	@Id
-	private Long numero;
+	private long idInscricao;
+	private long numero;
 	private boolean pagamento;
 	private boolean validada;
 	private Categoria categoria = new Categoria();
@@ -17,10 +18,16 @@ public class Inscricao {
 	private ArrayList<Partida> partidas = new ArrayList<>();
 	private Equipe equipe = new Equipe();
 	
-	public Long getNumero() {
+	public long getIdInscricao() {
+		return idInscricao;
+	}
+	public void setIdInscricao(long idInscricao) {
+		this.idInscricao = idInscricao;
+	}
+	public long getNumero() {
 		return numero;
 	}
-	public void setNumero(Long numero) {
+	public void setNumero(long numero) {
 		this.numero = numero;
 	}
 	public boolean isPagamento() {
