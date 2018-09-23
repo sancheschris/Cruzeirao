@@ -2,17 +2,22 @@ package sistema.entidades;
 
 import java.util.ArrayList;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.Id;
-import javax.persistence.Transient;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 
 @Entity
 public class Rodada {
 	@Id
 	private long idRodada;
 	private int numero;
+	@ManyToOne
+	@JoinColumn(name="idGrupo")
 	private Grupo grupo;
-	@Transient
+	@OneToMany(cascade=CascadeType.PERSIST, mappedBy="rodada")
 	private ArrayList<Partida> partidas  = new ArrayList<>();
 	
 	public long getIdRodada() {

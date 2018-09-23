@@ -1,14 +1,22 @@
 package sistema.entidades;
 
+import java.io.Serializable;
 import java.util.Date;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.Inheritance;
+import javax.persistence.InheritanceType;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
 @Entity
-public class Partida {
+@Inheritance(strategy=InheritanceType.JOINED)
+public class Partida implements Serializable {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	@Id
 	private long idPartida;
 	private int numero;
@@ -18,6 +26,7 @@ public class Partida {
 	private Date data;
 	private Partida proxPartida;
 	private Grupo grupo;
+	private Rodada rodada;
 	private String relatoJuiz;
 	private Inscricao[] inscricoes = {new Inscricao(), new Inscricao()};  // 0 ou 2 inscricoes
 	
@@ -62,6 +71,13 @@ public class Partida {
 	}
 	public void setGrupo(Grupo grupo) {
 		this.grupo = grupo;
+	}
+	
+	public Rodada getRodada() {
+		return rodada;
+	}
+	public void setRodada(Rodada rodada) {
+		this.rodada = rodada;
 	}
 	public String getRelatoJuiz() {
 		return relatoJuiz;

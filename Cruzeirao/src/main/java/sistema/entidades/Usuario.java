@@ -10,13 +10,20 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
-import javax.persistence.Transient;
 
 
 @Entity
+@NamedQueries 
+({
+	@NamedQuery(name="Usuario.findId", 
+			query=" Select u From Usuario u Where u.nome = :nome")
+})
 public class Usuario {
 
 	@Id
@@ -26,7 +33,7 @@ public class Usuario {
 	private String nome;
 	@Temporal(TemporalType.DATE)
 	private Date dataNascimento;
-	@OneToMany(cascade=CascadeType.PERSIST, mappedBy = "usuario")
+	@ManyToMany(mappedBy="usuarios")
 	private ArrayList<Equipe> equipes = new ArrayList<Equipe>();
 	@OneToMany(cascade=CascadeType.PERSIST)
 	@JoinTable(name="TBLUserCamp", 

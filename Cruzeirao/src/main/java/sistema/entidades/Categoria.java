@@ -2,26 +2,40 @@ package sistema.entidades;
 
 import java.util.ArrayList;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Transient;
 
 @Entity
 public class Categoria {
 	@Id
+	private long idCategoria;
 	private String nome;
 	private int nascidosApartirDe;
-	@Transient
+	@OneToMany(cascade=CascadeType.PERSIST, mappedBy="categoria")
 	private ArrayList<Inscricao> inscricoes = new ArrayList<>();
+	@ManyToOne
+	@JoinColumn(name="idCampeonato")
 	private Campeonato campeonato;
-	@Transient
+	@OneToMany(cascade=CascadeType.PERSIST, mappedBy="categoria")
 	private ArrayList<Fase> fases = new ArrayList<Fase>();
-	@Transient
+	@Transient // verirficar colecao ou embeded
 	private ArrayList<Campeonato> campeonatos = new ArrayList<Campeonato>();
 	private int minJogadores;
 	private int maxJogadores;
 	private String sexo;
 	
+	public long getIdCategoria() {
+		return idCategoria;
+	}
+
+	public void setIdCategoria(long idCategoria) {
+		this.idCategoria = idCategoria;
+	}
 
 	public String getNome() {
 		return nome;

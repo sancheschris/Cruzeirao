@@ -2,17 +2,22 @@ package sistema.entidades;
 
 import java.util.ArrayList;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.Id;
-import javax.persistence.Transient;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 
 @Entity
 public class Grupo {
 	@Id
 	private long idGrupo;
 	private String nome;
+	@ManyToOne
+	@JoinColumn(name="idFase")
 	private Fase fase;
-	@Transient
+	@OneToMany(cascade=CascadeType.PERSIST, mappedBy="grupo")
 	private ArrayList<Rodada> rodadas = new ArrayList<>();
 	private int numero;
 	

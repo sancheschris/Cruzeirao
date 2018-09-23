@@ -49,6 +49,15 @@ public class CampeonatoMB {
 		this.campeonatoAtual = campeonatoAtual;
 	}
 	
+	public String verCategoriasNome(String idNome) {
+		campeonatoAtual = (Campeonato) campeonatoService.getCampeonatoByNome(idNome);
+		return "listarCategoriaCampeonato";
+	}
+	
+	public String verCategorias(Campeonato campeonato) {
+		campeonatoAtual = (Campeonato) campeonatoService.getCampeonatoByNome(campeonato.getNome());
+		return "listarCategoriaCampeonato";
+	}
 	/*
 	public String verCategoriasNome(String idNome) {
 		campeonatoAtual = campeonatoService.getCampeonatoByNome(idNome);

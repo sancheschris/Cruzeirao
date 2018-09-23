@@ -3,13 +3,16 @@ package sistema.entidades;
 import java.util.ArrayList;
 import java.util.Date;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
-import javax.persistence.Transient;
 
 @Entity
 public class Equipe {
@@ -22,9 +25,12 @@ public class Equipe {
 	@ManyToOne
 	@JoinColumn(name="cpf")
 	private Usuario usuario;
-	@Transient
+	@ManyToMany
+	@JoinTable(name="TBL_UsuarioEquipe",
+		joinColumns = @JoinColumn(name="idEquipe"),
+		inverseJoinColumns = @JoinColumn(name="idUsuario"))
 	private ArrayList<Usuario> usuarios = new ArrayList<Usuario>(); // equipe tem 0 ou mais usuarios
-	@Transient
+	@OneToMany(cascade=CascadeType.PERSIST, mappedBy="equipe")
 	private ArrayList<Inscricao> inscricoes = new ArrayList<Inscricao>(); // equipe realiza 0 ou mais inscriçoes
 
 	public long getIdEquipe() {

@@ -66,6 +66,11 @@ public class UsuarioMB {
 		usuarios.remove(usuario);
 	}
 	
+	public String verCampeonatos(String nome) {
+		usuarioAtual = (Usuario) usuarioService.getUsuariosId(nome);
+		return "listarCampeonatoUsuario";
+	}
+	
 	/*
 	public String verEquipesCPF(String cpf)
 	{

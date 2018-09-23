@@ -4,6 +4,8 @@ import java.util.ArrayList;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Transient;
 
 @Entity
@@ -13,9 +15,13 @@ public class Inscricao {
 	private long numero;
 	private boolean pagamento;
 	private boolean validada;
+	@ManyToOne
+	@JoinColumn(name="idCategoria")
 	private Categoria categoria = new Categoria();
 	@Transient
 	private ArrayList<Partida> partidas = new ArrayList<>();
+	@ManyToOne
+	@JoinColumn(name="idEquipe")
 	private Equipe equipe = new Equipe();
 	
 	public long getIdInscricao() {

@@ -7,6 +7,7 @@ import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 import javax.persistence.Query;
 
+import sistema.entidades.Campeonato;
 import sistema.entidades.Usuario;
 
 
@@ -58,5 +59,17 @@ public class UsuarioService {
 		em.close();
 		
 		return usuarios;
-	}	
+	}
+	
+	@SuppressWarnings("unchecked")
+	public List<Usuario> getUsuariosId(String nome) {
+		List<Usuario> usuarios;
+		
+		EntityManager em = emf.createEntityManager();
+		usuarios = em.createNamedQuery("Usuario.findId").getResultList();
+		em.setProperty("nome", nome);
+		em.close();
+		
+		return usuarios;
+	}
 }

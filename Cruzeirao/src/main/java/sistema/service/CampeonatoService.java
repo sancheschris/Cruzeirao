@@ -7,6 +7,7 @@ import javax.persistence.EntityManagerFactory;
 import javax.persistence.Query;
 
 import sistema.entidades.Campeonato;
+import sistema.entidades.Usuario;
 
 public class CampeonatoService {
 	
@@ -22,6 +23,23 @@ public class CampeonatoService {
 		em.close();
 	}
 	
+	public void alterar(Campeonato campeonato) {
+		EntityManager em = emf.createEntityManager();
+		em.getTransaction().begin();
+		em.merge(campeonato);
+		em.getTransaction().commit();
+		em.close();
+	}
+	
+	public void remover(Campeonato campeonato) {
+		EntityManager em = emf.createEntityManager();
+		em.getTransaction().begin();
+		campeonato = em.find(Campeonato.class, campeonato.getIdCampeonato());
+		em.remove(campeonato);
+		em.getTransaction().commit();
+		em.close();
+	}
+	
 	@SuppressWarnings("unchecked")
 	public List<Campeonato> getCampeonatos()
 	{
@@ -34,6 +52,22 @@ public class CampeonatoService {
 		
 		return campeonatos;
 	}
+	
+	@SuppressWarnings("unchecked")
+	public List<Campeonato> getCampeonatoByNome(String nome) {
+		List<Campeonato> campeonatos;
+		
+		EntityManager em = emf.createEntityManager();
+		campeonatos = em.createNamedQuery("Campeonato.findNome").getResultList();
+		em.setProperty("nome", nome);
+		em.close();
+		
+		return campeonatos;
+	}
+	
+	
+	
+	
 	
 	/*
 	public List<Campeonato> getCampeonatos() {

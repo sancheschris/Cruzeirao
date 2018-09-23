@@ -2,8 +2,12 @@ package sistema.entidades;
 import java.util.ArrayList;
 import java.util.Date;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.persistence.Transient;
@@ -17,10 +21,12 @@ public class Fase {
 	private Date dataInicio;
 	@Temporal(TemporalType.DATE)
 	private Date dataFim;
+	@ManyToOne
+	@JoinColumn(name="idCategoria")
 	private Categoria categoria;
-	@Transient
+	@Transient // verificar colecction ou embedded
 	private ArrayList<Categoria> categorias = new ArrayList<Categoria>(); 
-	@Transient
+	@OneToMany(cascade=CascadeType.PERSIST, mappedBy="fase")
 	private static ArrayList<Grupo> grupos = new ArrayList<>();
 	private int numero;
 	
