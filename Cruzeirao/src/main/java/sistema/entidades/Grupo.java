@@ -1,5 +1,6 @@
 package sistema.entidades;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 import javax.persistence.CascadeType;
@@ -10,7 +11,11 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
 @Entity
-public class Grupo {
+public class Grupo implements Serializable {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	@Id
 	private long idGrupo;
 	private String nome;

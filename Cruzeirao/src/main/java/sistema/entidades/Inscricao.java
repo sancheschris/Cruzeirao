@@ -1,5 +1,6 @@
 package sistema.entidades;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 import javax.persistence.Entity;
@@ -9,7 +10,11 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Transient;
 
 @Entity
-public class Inscricao {
+public class Inscricao implements Serializable {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	@Id
 	private long idInscricao;
 	private long numero;

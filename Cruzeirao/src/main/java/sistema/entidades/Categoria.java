@@ -1,5 +1,6 @@
 package sistema.entidades;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 import javax.persistence.CascadeType;
@@ -11,7 +12,11 @@ import javax.persistence.OneToMany;
 import javax.persistence.Transient;
 
 @Entity
-public class Categoria {
+public class Categoria implements Serializable {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	@Id
 	private long idCategoria;
 	private String nome;

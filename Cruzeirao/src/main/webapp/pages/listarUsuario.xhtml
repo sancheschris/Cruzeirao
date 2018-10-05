@@ -36,7 +36,7 @@
 			      <p:column headerText="Endereco">
 			         <p:outputLabel value="#{usuario.endereco}"/>
 			      </p:column>
-			       			       <p:column headerText="RG">
+			      <p:column headerText="RG">
 		          <p:outputLabel value="#{usuario.rg}"/>
 		       </p:column>
 		       
@@ -50,7 +50,8 @@
 			       			       <p:column headerText="Opções" >
 				<p:commandLink action="#{usuarioMB.verEquipes(usuario)}" value="Ver Equipes" />
 				</p:column>
-					<p:column headerText="Opções" >					<p:commandLink action="#{usuarioMB.verCampeonatos(usuario)}" value="Ver Campeonatos" />
+					<p:column headerText="Opções" >		
+					<p:commandLink action="#{usuarioMB.verCampeonatos(usuario)}" value="Ver Campeonatos" />
 				</p:column>
 				</p:dataTable>
 			</h:form>

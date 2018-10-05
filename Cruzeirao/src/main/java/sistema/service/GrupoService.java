@@ -7,6 +7,7 @@ import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 import javax.persistence.Query;
 
+import sistema.entidades.Equipe;
 import sistema.entidades.Grupo;
 
 public class GrupoService {
@@ -36,6 +37,13 @@ public class GrupoService {
 		em.close();
 		
 		return grupos;
+	}
+	
+	public Grupo getGrupoById(long id) {
+		EntityManager em = emf.createEntityManager();
+		Grupo g = em.find(Grupo.class, id);
+		em.close();
+		return g;
 	}
 	
 	/*

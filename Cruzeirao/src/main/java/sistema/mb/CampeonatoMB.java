@@ -10,6 +10,7 @@ import javax.faces.bean.SessionScoped;
 import sistema.entidades.Campeonato;
 import sistema.entidades.Categoria;
 import sistema.entidades.Fase;
+import sistema.entidades.Usuario;
 import sistema.service.CampeonatoService;
 
 
@@ -21,6 +22,7 @@ public class CampeonatoMB {
 	private Campeonato novoCampeonato = new Campeonato();
 	private Campeonato campeonatoAtual;
 	private Categoria novaCategoria;
+	private List<Campeonato> campeonatos;
 	
 	public String salvar() {
 		campeonatoService.salvar(novoCampeonato);
@@ -30,13 +32,21 @@ public class CampeonatoMB {
 	
 	public List <Campeonato> getCampeonatos()
 	{
-		return campeonatoService.getCampeonatos();
+		if(campeonatos == null)
+			campeonatos = campeonatoService.getCampeonatos();
+		
+		return campeonatos;
 	}
 
 	public Campeonato getNovoCampeonato() {
 		return novoCampeonato;
 	}
 
+	public void remover(Campeonato campeonato) {
+		campeonatoService.remover(campeonato);
+		campeonatos.remove(campeonato);
+	}
+	
 	public void setNovoCampeonato(Campeonato novoCampeonato) {
 		this.novoCampeonato = novoCampeonato;
 	}
@@ -49,15 +59,15 @@ public class CampeonatoMB {
 		this.campeonatoAtual = campeonatoAtual;
 	}
 	
-	public String verCategoriasNome(String idNome) {
-		campeonatoAtual = (Campeonato) campeonatoService.getCampeonatoByNome(idNome);
-		return "listarCategoriaCampeonato";
-	}
-	
 	public String verCategorias(Campeonato campeonato) {
-		campeonatoAtual = (Campeonato) campeonatoService.getCampeonatoByNome(campeonato.getNome());
+		campeonatoAtual = campeonatoService.getCampeonatoById(campeonato.getIdCampeonato());
 		return "listarCategoriaCampeonato";
 	}
+//	
+//	public void remover(Campeonato campeonato) {
+//		campeonatoService.remover(campeonato);
+//		campeonatos.remove(usuario);
+//	}
 	/*
 	public String verCategoriasNome(String idNome) {
 		campeonatoAtual = campeonatoService.getCampeonatoByNome(idNome);

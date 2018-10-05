@@ -25,19 +25,19 @@ public class CategoriaMB {
 		return "menu";
 	}
 	
-	/*
-	public String verFasesNome(String idNome)
+	public String verFases(Categoria categoria)
 	{
-		categoriaAtual = categoriaService.getCategoriaByNome(idNome);
+		categoriaAtual = categoriaService.getCategoriaById(categoria.getIdCategoria());
 		return "listarFaseCategoria";
 	}
 	
-	public String verFases(Categoria categoria)
-	{
-		categoriaAtual = categoriaService.getCategoriaByNome(categoria.getNome());
-		return "listarFaseCategoria";
-	}
-	*/
+	
+//	public String verFasesNome(String idNome)
+//	{
+//		categoriaAtual = categoriaService.getCategoriaByNome(idNome);
+//		return "listarFaseCategoria";
+//	}
+	
 	public List<Categoria> getCategorias(){
 		return categoriaService.getCategorias();
 	}

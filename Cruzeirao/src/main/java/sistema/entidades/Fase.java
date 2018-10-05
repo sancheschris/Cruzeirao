@@ -1,4 +1,5 @@
 package sistema.entidades;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Date;
 
@@ -13,8 +14,12 @@ import javax.persistence.TemporalType;
 import javax.persistence.Transient;
 
 @Entity
-public class Fase {
+public class Fase implements Serializable {
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	@Id
 	private long idFase;
 	@Temporal(TemporalType.DATE)

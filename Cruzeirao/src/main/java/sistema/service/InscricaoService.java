@@ -36,23 +36,11 @@ public class InscricaoService {
 		
 		return inscricoes;
 	}
-	/*
-	private ArrayList<Inscricao> inscricoes = Dados.INSCRICOES;
 	
-	public List<Inscricao> getCampeonatos() {
-		return inscricoes;
+	public Inscricao getInscricaoById(long id) {
+		EntityManager em = emf.createEntityManager();
+		Inscricao i = em.find(Inscricao.class, id);
+		em.close();
+		return i;
 	}
-	
-	public void salvar(Inscricao inscricao) {
-		inscricoes.add(inscricao);
-	}
-	
-	public Inscricao getInscricaoByNome(int IdNumero) {
-		for(int i=0; i< inscricoes.size(); i++)
-			if(IdNumero == inscricoes.get(i).getNumero())
-				return inscricoes.get(i);
-		
-		return null;
-	}
-	*/
 }

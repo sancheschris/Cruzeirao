@@ -4,26 +4,31 @@ import java.util.List;
 
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
-import javax.faces.bean.ViewScoped;
+import javax.persistence.EntityManagerFactory;
 
 import org.primefaces.event.RowEditEvent;
 
 import sistema.entidades.Campeonato;
 import sistema.entidades.Equipe;
 import sistema.entidades.Usuario;
+import sistema.service.CampeonatoService;
+import sistema.service.EquipeService;
 import sistema.service.UsuarioService;
 
 
 @ManagedBean
-@ViewScoped
+@SessionScoped
 public class UsuarioMB {
 	
 	private UsuarioService usuarioService = new UsuarioService();
+	private CampeonatoService campeonatoService = new CampeonatoService();
+	private EquipeService equipeService = new EquipeService();
 	private Usuario novoUsuario = new Usuario();
 	private Equipe novaEquipe;
-	private Campeonato novoCampeonato;
+	private Campeonato novoCampeonato = new Campeonato();
 	private Usuario usuarioAtual;
 	private List<Usuario> usuarios;
+	private EntityManagerFactory emf2;
 	
 	// Edicao de um aluno na tabela
 	public void onRowEdit(RowEditEvent event) {
@@ -31,15 +36,6 @@ public class UsuarioMB {
 		Usuario u = ((Usuario) event.getObject());
 		usuarioService.alterar(u);
 	}
-	
-	/*
-	public String salvar() {
-		usuarioService.salvar(novoUsuario);
-		novoUsuario = new Usuario();
-		return "menu";
-	}
-	
-	*/
 	
 	public void salvar() {
 		usuarioService.salvar(novoUsuario);
@@ -66,39 +62,24 @@ public class UsuarioMB {
 		usuarios.remove(usuario);
 	}
 	
-	public String verCampeonatos(String nome) {
-		usuarioAtual = (Usuario) usuarioService.getUsuariosId(nome);
+	public String verCampeonatos(Usuario usuario)
+	{
+		usuarioAtual = usuarioService.getCampeonatosUsuario(usuario);
 		return "listarCampeonatoUsuario";
 	}
 	
-	/*
-	public String verEquipesCPF(String cpf)
+	public String verCampeonatosCPF(String cpf)
 	{
-		usuarioAtual = usuarioService.getUsuarios();
-		return "listarEquipeUsuario";
+		usuarioAtual = usuarioService.getUsuarioByNome(cpf);
+		return "listarCampeonatoUsuario";
 	}
 	
 	
 	public String verEquipes(Usuario usuario)
 	{
-		usuarioAtual = usuarioService.getUsuarioId(usuario.getCpf());
+		usuarioAtual = usuarioService.getUsuarioById(usuario.getIdUsuario());
 		return "listarEquipeUsuario";
 	}
-	
-	
-	public String verCampeonatosCPF(String cpf)
-	{
-		usuarioAtual = usuarioService.getUsuarioId(cpf);
-		return "listarCampeonatoUsuario";
-	}
-	
-	
-	public String verCampeonatos(Usuario usuario)
-	{
-		usuarioAtual = usuarioService.getUsuarioId(usuario.getCpf());
-		return "listarCampeonatoUsuario";
-	}
-	*/
 	
 	public String criarEquipes()
 	{
@@ -115,19 +96,22 @@ public class UsuarioMB {
 
 	public String salvarEquipe()
 	{
+		equipeService.salvar(novaEquipe);
 		usuarioAtual.addEquipes(novaEquipe);
 		novaEquipe.setUsuario(usuarioAtual);
 		return "listarEquipeUsuario";
 	}
 	
-	/*
+	
 	public String salvarCampeonato()
 	{
+		campeonatoService.salvar(novoCampeonato);
 		usuarioAtual.addCampeonatos(novoCampeonato);
-		novoCampeonato.setUsuario(usuarioAtual);
+		novoCampeonato.getUsuarios().add(usuarioAtual);
+		novoCampeonato =  new Campeonato();
 		return "listarCampeonatoUsuario";
 	}
-	*/
+
 	public Usuario getNovoUsuario() {
 		return novoUsuario;
 	}
@@ -163,7 +147,4 @@ public class UsuarioMB {
 	public void setUsuarioAtual(Usuario usuarioAtual) {
 		this.usuarioAtual = usuarioAtual;
 	}
-	
-	
-	
 }

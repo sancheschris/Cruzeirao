@@ -7,6 +7,7 @@ import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 import javax.persistence.Query;
 
+import sistema.entidades.Equipe;
 import sistema.entidades.Partida;
 
 public class PartidaService {
@@ -35,6 +36,14 @@ public class PartidaService {
 		
 		return partidas;
 	}
+	
+	public Partida getCampeonatoById(long id) {
+		EntityManager em = emf.createEntityManager();
+		Partida p = em.find(Partida.class, id);
+		em.close();
+		return p;
+	}
+	
 	/*
 	private ArrayList<Partida> partidas = Dados.PARTIDAS;
 	

@@ -8,9 +8,9 @@
 	<ui:define name="principal">
 		<div class="principal" align="center">
 			<h1>Dados do usuario:</h1>
-			<p:outputLabel value="CPF: #{usuarioMB.usuarioAtual.cpf}"  />
+			<p:outputLabel value="#{usuarioMB.usuarioAtual.idUsuario}"  />
 			<br/>
-			<p:outputLabel value="Nome: #{usuarioMB.usuarioAtual.nome}"  />
+			<p:outputLabel value="#{usuarioMB.usuarioAtual.nome}"  />
 			
 			    <h1>Campeonatos Cadastrados:</h1>
 				<h:form>
@@ -42,7 +42,7 @@
 			       <p:column headerText="Valor da Taxa">
 			       <p:outputLabel value="#{campeonato.valorTaxa}"/>
 			       </p:column>
-			       
+			        
 			       <p:column headerText="Opções" >
 						<p:commandLink action="#{campeonatoMB.verCategorias(campeonato)}" value="Ver Categorias" />
 						</p:column>

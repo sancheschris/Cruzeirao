@@ -1,5 +1,6 @@
 package sistema.entidades;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Date;
 
@@ -24,8 +25,12 @@ import javax.persistence.TemporalType;
 	@NamedQuery(name="Usuario.findId", 
 			query=" Select u From Usuario u Where u.nome = :nome")
 })
-public class Usuario {
+public class Usuario implements Serializable {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private long idUsuario;

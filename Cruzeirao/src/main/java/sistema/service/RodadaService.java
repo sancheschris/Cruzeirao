@@ -7,6 +7,7 @@ import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 import javax.persistence.Query;
 
+import sistema.entidades.Equipe;
 import sistema.entidades.Rodada;
 
 public class RodadaService {
@@ -35,6 +36,13 @@ public class RodadaService {
 		em.close();
 		
 		return rodadas;
+	}
+	
+	public Rodada getCampeonatoByIs(long id) {
+		EntityManager em = emf.createEntityManager();
+		Rodada r = em.find(Rodada.class, id);
+		em.close();
+		return r;
 	}
 	/*
 	private ArrayList<Rodada> rodadas = Dados.RODADAS;

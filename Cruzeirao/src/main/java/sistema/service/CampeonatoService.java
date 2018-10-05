@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
+import javax.persistence.Persistence;
 import javax.persistence.Query;
 
 import sistema.entidades.Campeonato;
@@ -14,12 +15,16 @@ public class CampeonatoService {
 	//private ArrayList<Campeonato> campeonatos = Dados.CAMPEONATOS;
 	private EntityManagerFactory emf;
 	
+	public CampeonatoService() {
+		emf = Persistence.createEntityManagerFactory("Cruzeirao");
+	}
+	
 	public void salvar(Campeonato campeonato)
 	{
 		EntityManager em = emf.createEntityManager();
 		em.getTransaction().begin();
 		em.persist(campeonato);
-		em.getTransaction();
+		em.getTransaction().commit();
 		em.close();
 	}
 	
@@ -53,21 +58,14 @@ public class CampeonatoService {
 		return campeonatos;
 	}
 	
-	@SuppressWarnings("unchecked")
-	public List<Campeonato> getCampeonatoByNome(String nome) {
-		List<Campeonato> campeonatos;
-		
+	
+
+	public Campeonato getCampeonatoById(long id) {
 		EntityManager em = emf.createEntityManager();
-		campeonatos = em.createNamedQuery("Campeonato.findNome").getResultList();
-		em.setProperty("nome", nome);
+		Campeonato c = em.find(Campeonato.class, id);
 		em.close();
-		
-		return campeonatos;
+		return c;
 	}
-	
-	
-	
-	
 	
 	/*
 	public List<Campeonato> getCampeonatos() {

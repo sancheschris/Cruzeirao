@@ -8,6 +8,7 @@ import javax.persistence.Persistence;
 import javax.persistence.Query;
 
 import sistema.entidades.Categoria;
+import sistema.entidades.Equipe;
 
 public class CategoriaService {
 	
@@ -37,6 +38,13 @@ public class CategoriaService {
 		em.close();
 		
 		return categorias;
+	}
+	
+	public Categoria getCategoriaById(long id) {
+		EntityManager em = emf.createEntityManager();
+		Categoria c = em.find(Categoria.class, id);
+		em.close();
+		return c;
 	}
 	
 	/*
