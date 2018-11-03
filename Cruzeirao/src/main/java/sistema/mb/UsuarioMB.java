@@ -38,7 +38,7 @@ public class UsuarioMB {
 	}
 	
 	public void salvar() {
-		usuarioService.salvar(novoUsuario);
+		novoUsuario = usuarioService.salvar(novoUsuario);
 		
 		if(usuarios != null) {
 			usuarios.add(novoUsuario);
@@ -64,15 +64,19 @@ public class UsuarioMB {
 	
 	public String verCampeonatos(Usuario usuario)
 	{
-		usuarioAtual = usuarioService.getCampeonatosUsuario(usuario);
+		usuarioAtual = usuarioService.getCampeonatosUsuario(usuario);  // chamar essa linha no listarCampeonato
 		return "listarCampeonatoUsuario";
 	}
 	
-	public String verCampeonatosCPF(String cpf)
-	{
-		usuarioAtual = usuarioService.getUsuarioByNome(cpf);
-		return "listarCampeonatoUsuario";
+	public void getCampeonatos(Usuario usuario) {
+		usuarioAtual = usuarioService.getCampeonatosUsuario(usuario);
 	}
+	
+//	public String verCampeonatosCPF(String cpf)
+//	{
+//		usuarioAtual = usuarioService.getUsuarioByNome(cpf);
+//		return "listarCampeonatoUsuario";
+//	}
 	
 	
 	public String verEquipes(Usuario usuario)
