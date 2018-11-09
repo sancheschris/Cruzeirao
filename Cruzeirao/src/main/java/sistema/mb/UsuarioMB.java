@@ -109,9 +109,10 @@ public class UsuarioMB {
 	
 	public String salvarCampeonato()
 	{
-		campeonatoService.salvar(novoCampeonato);
+		
 		usuarioAtual.addCampeonatos(novoCampeonato);
-		novoCampeonato.getUsuarios().add(usuarioAtual);
+		novoCampeonato.setUsuario(usuarioAtual);
+		campeonatoService.salvar(novoCampeonato);
 		novoCampeonato =  new Campeonato();
 		return "listarCampeonatoUsuario";
 	}
@@ -144,6 +145,7 @@ public class UsuarioMB {
 
 
 	public Usuario getUsuarioAtual() {
+		usuarioAtual = usuarioService.getCampeonatosUsuario(usuarioAtual);
 		return usuarioAtual;
 	}
 

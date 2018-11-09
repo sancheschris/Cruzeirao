@@ -12,6 +12,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
@@ -40,11 +41,13 @@ public class Usuario implements Serializable {
 	private Date dataNascimento;
 	@ManyToMany(mappedBy="usuarios")
 	private ArrayList<Equipe> equipes = new ArrayList<Equipe>();
-	@OneToMany(cascade=CascadeType.PERSIST)
-	@JoinTable(name="TBLUserCamp", 
-	joinColumns=@JoinColumn(name="id_usuario"),
-	inverseJoinColumns=@JoinColumn(name="id_campeonato"))
-	private ArrayList<Campeonato> campeonatos = new ArrayList<Campeonato>();
+	
+	
+	@OneToMany(mappedBy="usuario")
+    private ArrayList<Campeonato> campeonatos = new ArrayList<Campeonato>();
+	
+	
+	
 	private String telefoneFixo;
 	private String telefoneMovel;
 	private String endereco;

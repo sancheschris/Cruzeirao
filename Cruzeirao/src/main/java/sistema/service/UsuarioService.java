@@ -44,7 +44,8 @@ public class UsuarioService {
 	
 	public Usuario getCampeonatosUsuario(Usuario u) {
 		u = usuarioDAO.getById(Usuario.class, u.getIdUsuario());
-		u.getCampeonatos();
+		u.getCampeonatos().size();
+		System.out.println(u.getCampeonatos());
 		usuarioDAO.closeEntityManager();
 		return u;
 	}

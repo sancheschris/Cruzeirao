@@ -14,6 +14,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
@@ -36,11 +37,13 @@ public class Campeonato {
 	private String nome;
 	@OneToMany(cascade=CascadeType.PERSIST, mappedBy="campeonato")
 	private ArrayList<Categoria> categorias = new ArrayList<Categoria>();
-	@ManyToMany
-	@JoinTable(name="TBLUserCamp", 
-	joinColumns=@JoinColumn(name="id_usuario"),
-	inverseJoinColumns=@JoinColumn(name="id_campeonato"))
-	private ArrayList<Usuario> usuarios = new ArrayList<Usuario>();
+	
+	
+	@ManyToOne
+	private Usuario usuario;
+	
+	
+	
 	@Temporal(TemporalType.DATE)
 	private Date dataInicioInscricao;
 	@Temporal(TemporalType.DATE)
@@ -128,24 +131,19 @@ public class Campeonato {
 		this.valorTaxa = valorTaxa;
 	}
 
-	/*
+	public void addCategorias(Categoria categoria) {
+		categorias.add(categoria);
+	}
+
+
 	public Usuario getUsuario() {
 		return usuario;
 	}
 
+
 	public void setUsuario(Usuario usuario) {
 		this.usuario = usuario;
 	}
-	*/
-	public void addCategorias(Categoria categoria) {
-		categorias.add(categoria);
-	}
 	
-	public ArrayList<Usuario> getUsuarios() {
-		return usuarios;
-	}
-
-	public void setUsuarios(ArrayList<Usuario> usuarios) {
-		this.usuarios = usuarios;
-	}
+	
 }
