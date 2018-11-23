@@ -39,7 +39,8 @@ public class Usuario implements Serializable {
 	private String nome;
 	@Temporal(TemporalType.DATE)
 	private Date dataNascimento;
-	@ManyToMany(mappedBy="usuarios")
+	
+	@OneToMany(mappedBy="usuario")
 	private ArrayList<Equipe> equipes = new ArrayList<Equipe>();
 	
 	

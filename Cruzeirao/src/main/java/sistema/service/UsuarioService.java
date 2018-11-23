@@ -50,6 +50,15 @@ public class UsuarioService {
 		return u;
 	}
 	
+	
+	public Usuario getEquipesUsuario(Usuario u) {
+		u = usuarioDAO.getById(Usuario.class, u.getIdUsuario());
+		u.getEquipes().size();
+		System.out.println(u.getEquipes());
+		usuarioDAO.closeEntityManager();
+		return u;
+	}
+	
 
 	public Usuario getUsuarioById(long id)
 	{

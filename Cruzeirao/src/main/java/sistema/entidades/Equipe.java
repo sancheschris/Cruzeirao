@@ -30,14 +30,20 @@ public class Equipe implements Serializable {
 	@Temporal(TemporalType.DATE)
 	private Date dataFundacao;
 	private String cidade;
+	
+	
 	@ManyToOne
-	@JoinColumn(name="cpf")
+	//@JoinColumn(name="idUsuario")
 	private Usuario usuario;
+	
 	@ManyToMany
 	@JoinTable(name="TBL_UsuarioEquipe",
 		joinColumns = @JoinColumn(name="idEquipe"),
 		inverseJoinColumns = @JoinColumn(name="idUsuario"))
 	private ArrayList<Usuario> usuarios = new ArrayList<Usuario>(); // equipe tem 0 ou mais usuarios
+	
+	
+	
 	@OneToMany(cascade=CascadeType.PERSIST, mappedBy="equipe")
 	private ArrayList<Inscricao> inscricoes = new ArrayList<Inscricao>(); // equipe realiza 0 ou mais inscriçoes
 

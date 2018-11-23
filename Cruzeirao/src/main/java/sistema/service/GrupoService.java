@@ -32,7 +32,7 @@ public class GrupoService {
 		List<Grupo> grupos;
 		
 		EntityManager em = emf.createEntityManager();
-		Query q = em.createQuery("Select g from Grupos g");
+		Query q = em.createQuery("Select g from Grupo g");
 		grupos = q.getResultList();
 		em.close();
 		

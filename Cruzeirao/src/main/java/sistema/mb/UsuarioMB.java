@@ -24,7 +24,7 @@ public class UsuarioMB {
 	private CampeonatoService campeonatoService = new CampeonatoService();
 	private EquipeService equipeService = new EquipeService();
 	private Usuario novoUsuario = new Usuario();
-	private Equipe novaEquipe;
+	private Equipe novaEquipe = new Equipe();
 	private Campeonato novoCampeonato = new Campeonato();
 	private Usuario usuarioAtual;
 	private List<Usuario> usuarios;
@@ -81,7 +81,7 @@ public class UsuarioMB {
 	
 	public String verEquipes(Usuario usuario)
 	{
-		usuarioAtual = usuarioService.getUsuarioById(usuario.getIdUsuario());
+		usuarioAtual = usuarioService.getEquipesUsuario(usuario);
 		return "listarEquipeUsuario";
 	}
 	
@@ -97,12 +97,19 @@ public class UsuarioMB {
 		return "cadastroCampeonato";
 	}
 	
+	
+	
 
 	public String salvarEquipe()
 	{
-		equipeService.salvar(novaEquipe);
 		usuarioAtual.addEquipes(novaEquipe);
 		novaEquipe.setUsuario(usuarioAtual);
+		
+		
+		equipeService.salvar(novaEquipe);
+		
+		novaEquipe = new Equipe();
+		
 		return "listarEquipeUsuario";
 	}
 	
