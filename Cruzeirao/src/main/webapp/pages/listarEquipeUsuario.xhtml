@@ -31,6 +31,10 @@
 				<p:column headerText="Cidade">
 				     <p:outputLabel  value="#{equipe.cidade}"/>
 				</p:column>
+				
+				<p:column headerText="Inscrições">
+					<p:commandLink action="#{equipeMB.verInscricao(equipe)}" value="Ver Inscricao" />
+				</p:column>
 				</p:dataTable>		
 			</h:form>
 		</div>

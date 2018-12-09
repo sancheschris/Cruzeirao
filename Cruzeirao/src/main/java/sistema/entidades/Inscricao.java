@@ -26,7 +26,7 @@ public class Inscricao implements Serializable {
 	@Transient
 	private ArrayList<Partida> partidas = new ArrayList<>();
 	@ManyToOne
-	@JoinColumn(name="idEquipe")
+	//@JoinColumn(name="idEquipe")
 	private Equipe equipe = new Equipe();
 	
 	public long getIdInscricao() {
